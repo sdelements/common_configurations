@@ -1,0 +1,151 @@
+[flake8]
+exclude =
+    # Third party code to support our js
+    node_modules,
+
+    # Code examples, etc
+    static_common,
+
+    # Ignore our migrations
+    [0-9][0-9][0-9][0-9]_*.py,
+
+    # Cache directories
+    cache,
+
+    # settings file
+    sigma/*_settings.py
+
+per-file-ignores =
+    */test/*.py:B001,B007,B011,S101,S105,S106,S107,S108,S311
+    */tests/*.py:B001,B007,B011,S101,S105,S106,S107,S108,S311
+    test/*.py:B001,B007,B011,S101,S105,S106,S107,S108,S311
+    tests/*.py:B001,B007,B011,S101,S105,S106,S107,S108,S311
+    selenium/*.py:B001,B007,B011,S101,S105,S106,S107,S108,S311
+    test_*.py:B001,B007,B011,S101,S105,S106,S107,S108,S311
+    */fixtures/*.py:B001,B007,B011,S101,S105,S106,S107,S108,S311
+    */testutils/*.py:B001,B007,B011,S101,S105,S106,S107,S108,S311
+
+select =
+    F
+    E111 # indentation multiple of 4
+    E112 # expected an indented block
+    E115 # expected an indented block (comment)
+    E117 # over-indented
+    E122 # continuation line missing indentation or outdented
+    E201 # whitespace after '{'
+    E202 # whitespace before '}'
+    E211 # whitespace before '('
+    E221 # multiple spaces before operator
+    E222 # too much whitespace after operator
+    E225 # missing whitespace around operator
+    E226 # missing whitespace around arithmetic operator
+    E228 # missing whitespace around modulo operator
+    E231 # missing whitespace after ','
+    E241 # multiple spaces after ','
+    E251 # unexpected spaces around keyword / parameter equals
+    E261 # at least two spaces before inline comment
+    E262 # inline comment should start with '# '
+    E265 # block comment should start with '# '
+    E271 # multiple spaces after keyword
+    E275 # missing whitespace after keyword
+    E301 # expected 1 blank line, found 0
+    E302 # expected 2 blank lines, found 0
+    E303 # too many blank lines
+    E305 # 2 blank lines after top level classes/funcs
+    E306 # Expected blank line before nested def
+    E401 # multiple imports on one line
+    E402 # module level import not at top of file
+    E502 # the backslash is redundant between brackets
+    E701 # multiple statements on one line (colon)
+    E703 # statement ends with a semicolon
+    E704 # Multiple statements on one line (def)
+    E711 # is None vs. == None
+    E712 # Comparison to true should be 'if cond is true:' or 'if cond:`
+    E713 # test for membership should be 'not in'
+    E721 # do not compare types, use 'isinstance()'
+    E741 # ambiguous variable name 'l'
+    W291 # No trailing whitespace
+    W292 # no newline at end of file
+    W293 # blank line with whitespace
+    W391 # blank line at end of file
+    W601 # using has_key() instead of in
+    W602 # deprecated exception raising
+    W605 # invalid escape sequence '\.'
+
+ignore =
+    E121 # continuation line under-indented for hanging indent
+    E123 # closing bracket does not match indentation of opening bracket's line
+    E124 # closing bracket does not match visual indentation
+    E126 # continuation line over-indented for hanging indent
+    E127 # continuation line over-indented for visual indent
+    E128 # continuation line under-indented for visual indent
+    E129 # visually indented line with same indent as next logical line
+    E131 # continuation line unaligned for hanging indent
+    E501 # line too long (209 > 140 characters)
+    E722 # No bare excepts
+    E731 # do not assign a lambda expression, use a def
+    F401 # module imported but unused
+    F403 # ‘from module import *’ used; unable to detect undefined names
+    F405 # may be undefined, or defined from star imports: mock_models.models.custom_attribute_model_mocks
+    W503 # line break before binary operator
+    W504 # line break after binary operator
+
+enable-extensions =
+    # flake8-bandit extension (https://github.com/tylerwince/flake8-bandit) with bandit (https://github.com/PyCQA/bandit/)
+    S # Various security rules
+
+    # flake8-black extension (https://github.com/peterjc/flake8-black) with black (https://github.com/psf/black)
+    BLK # Various BLK rules
+
+    # flake8-broken-line extension (https://github.com/sobolevn/flake8-broken-line)
+    N400 # Found backslash that is used for line breaking
+
+    # flake8-bugbear extension (https://github.com/PyCQA/flake8-bugbear)
+    B001 # Do not use bare except:, it also catches unexpected events like memory errors, interrupts, system exit, and so on.
+    B002 # Python does not support the unary prefix increment. You meant n += 1.
+    B003 # Assigning to os.environ doesn't clear the environment. Subprocesses are going to see outdated variables, in disagreement with the current process. Use os.environ.clear() or the env= argument to Popen.
+    B004 # Using hasattr(x, '__call__') to test if x is callable is unreliable. Use callable(x) for consistent results.
+    B005 # Using .strip() with multi-character strings is misleading the reader. Use .replace() or regular expressions to remove string fragments.
+    B006 # Do not use mutable data structures for argument defaults.
+    B007 # Loop control variable not used within the loop body. If this is intended, start the name with an underscore.
+    B008 # Do not perform function calls in argument defaults.
+    B009 # Do not call getattr(x, 'attr'), instead use normal property access: x.attr.
+    B010 # Do not call setattr(x, 'attr', val), instead use normal property access: x.attr = val.
+    B011 # Do not call assert False since python -O removes these calls. Instead should raise AssertionError().
+
+    # flake8-comprehensions extension (https://github.com/adamchainz/flake8-comprehensions)
+    C400 # Unnecessary generator - rewrite as a list comprehension.
+    C401 # Unnecessary generator - rewrite as a set comprehension.
+    C402 # Unnecessary generator - rewrite as a dict comprehension.
+    C403 # Unnecessary list comprehension - rewrite as a set comprehension.
+    C404 # Unnecessary list comprehension - rewrite as a dict comprehension.
+    C405 # Unnecessary (list/tuple) literal - rewrite as a set literal.
+    C406 # Unnecessary (list/tuple) literal - rewrite as a dict literal.
+    C407 # Unnecessary list comprehension - '<builtin>' can take a generator.
+    C408 # Unnecessary (dict/list/tuple) call - rewrite as a literal.
+    C409 # Unnecessary (list/tuple) passed to tuple() - (remove the outer call to tuple()/rewrite as a tuple literal).
+    C410 # Unnecessary (list/tuple) passed to list() - (remove the outer call to list()/rewrite as a list literal).
+    C411 # Unnecessary list call - remove the outer call to list().
+    C412 # Unnecessary list comprehension - 'in' can take a generator.
+
+    # flake8-docstrings extension (https://gitlab.com/pycqa/flake8-docstrings) with pydocstyle (https://github.com/PyCQA/pydocstyle)
+    D204 # 1 blank line required after class docstring
+    D300 # Use """triple double quotes"""
+
+    # flake8-eradicate extension (https://github.com/sobolevn/flake8-eradicate)
+    E800 # Found commented out code
+
+    # pep8-naming extension (https://github.com/PyCQA/pep8-naming)
+    N801 # class names should use CapWords convention
+    N802 # function name should be lowercase
+    N803 # argument name should be lowercase
+    N804 # first argument of a classmethod should be named 'cls'
+    N805 # first argument of a method should be named 'self'
+    N806 # variable in function should be lowercase
+    N807 # function name should not start and end with '__'
+    N811 # constant imported as non constant
+    N812 # lowercase imported as non lowercase
+    N813 # camelcase imported as lowercase
+    N814 # camelcase imported as constant
+    N815 # mixedCase variable in class scope
+    N816 # mixedCase variable in global scope
