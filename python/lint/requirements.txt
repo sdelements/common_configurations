@@ -22,7 +22,7 @@ pep8-naming==0.8.2                                                # Expat
 pycodestyle==2.5.0                                                # Expat
 pydocstyle==4.0.1                                                 # MIT
 pyflakes==2.1.1                                                   # MIT
-PyYAML==5.1.2                                                     # MIT
+PyYAML==5.4                                                     # MIT
 six==1.12.0                                                       # MIT
 smmap2==2.0.5                                                     # BSD 3 Clause
 snowballstemmer==2.0.0                                            # BSD 3 Clause
